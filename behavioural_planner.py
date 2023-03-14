@@ -432,8 +432,14 @@ def get_closest_index(waypoints, ego_state):
     closest_index = 0
     # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
     # ------------------------------------------------------------------
-    # for i in range(len(waypoints)):
-    #   ...
+    for i in range(len(waypoints)):
+        x_dist_squared = (waypoints[i][0] - ego_state[0])**2  # Squared x distance from waypoint to ego vehicle
+        y_dist_squared = (waypoints[i][1] - ego_state[1])**2  # Squared y distance from waypoint to ego vehicle
+        distance = np.sqrt(x_dist_squared + y_dist_squared)  # Euclidean distance from waypoint to ego vehicle
+        
+        if distance < closest_len:
+            closest_len = distance
+            closest_index = i
     # ------------------------------------------------------------------
 
     return closest_len, closest_index
