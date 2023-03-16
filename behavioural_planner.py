@@ -150,26 +150,23 @@ class BehaviouralPlanner:
             if self._stop_count == STOP_COUNTS:
                 # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
                 # --------------------------------------------------------------
-                # closest_len, closest_index = ...
-                # goal_index = ...
+                closest_len, closest_index = get_closest_index(waypoints, ego_state)
+                goal_index = self.get_goal_index(waypoints, ego_state, closest_len, closest_index)
                 # --------------------------------------------------------------
 
-                # We've stopped for the required amount of time, so the new goal 
-                # index for the stop line is not relevant. Use the goal index
-                # that is the lookahead distance away.
+                # We've stopped for the required amount of time, so use the new goal index
+                # to set the new goal state.
                 # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
                 # --------------------------------------------------------------
-                # stop_sign_found = ...
-                # self._goal_index = ... 
-                # self._goal_state = ... 
+                self._goal_index = goal_index
+                self._goal_state = waypoints[goal_index]
                 # --------------------------------------------------------------
 
-                # If the stop sign is no longer along our path, we can now
-                # transition back to our lane following state.
+                # We can now transition back to our lane following state.
                 # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
                 # --------------------------------------------------------------
-                # if not stop_sign_found:
-                #   ...
+                self._state = FOLLOW_LANE
+                self._stop_count = 0
                 # --------------------------------------------------------------
 
                 pass
@@ -178,7 +175,7 @@ class BehaviouralPlanner:
             else:
                 # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
                 # --------------------------------------------------------------
-                # ...
+                self._stop_count += 1
                 # --------------------------------------------------------------
 
                 pass
