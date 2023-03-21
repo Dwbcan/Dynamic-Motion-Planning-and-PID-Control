@@ -84,12 +84,18 @@ class LocalPlanner:
         # consecutive waypoints, then use the np.arctan2() function.
         # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
         # ------------------------------------------------------------------
-        # if ...
-        # delta_x = ...
-        # delta_y = ...
-        # else: ...
-        # ...
-        # heading = ...
+        
+        # Use the waypoint before the waypoint at goal_index if the waypoint at goal_index is the last waypoint
+        if goal_index == len(waypoints) - 1:
+            delta_x = waypoints[goal_index][0] - waypoints[goal_index - 1][0]  # X distance between waypoint at goal_index and the waypoint before it
+            delta_y = waypoints[goal_index][1] - waypoints[goal_index - 1][1]  # Y distance between waypoint at goal_index and the waypoint before it
+        
+        # Otherwise, use the next waypoint after the waypoint at goal_index
+        else:
+            delta_x = waypoints[goal_index + 1][0] - waypoints[goal_index][0]  # X distance between waypoint at goal_index and the waypoint after it
+            delta_y = waypoints[goal_index + 1][1] - waypoints[goal_index][1]  # Y distance between waypoint at goal_index and the waypoint after it
+        
+        heading = np.arctan2(delta_y, delta_x)
         # ------------------------------------------------------------------
 
         # Compute the center goal state in the local frame using 
