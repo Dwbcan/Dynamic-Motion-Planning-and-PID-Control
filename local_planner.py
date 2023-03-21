@@ -119,8 +119,10 @@ class LocalPlanner:
         # current yaw corresponds to theta = 0 in the new local frame.
         # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
         # ------------------------------------------------------------------
-        # goal_x = ...
-        # goal_y = ...
+        THETA = -ego_state[2]  # Angle of rotation that will rotate ego vehicle's heading such that its yaw is 0 in the new local frame
+        
+        goal_x = goal_state_local[0] * cos(THETA) - goal_state_local[1] * sin(THETA)  # Rotate goal state's x coordinate to new local frame
+        goal_y = goal_state_local[0] * sin(THETA) + goal_state_local[1] * cos(THETA)  # Rotate goal state's y coordinate to new local frame
         # ------------------------------------------------------------------
 
         # Compute the goal yaw in the local frame by subtracting off the 
