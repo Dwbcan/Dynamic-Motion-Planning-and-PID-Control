@@ -108,8 +108,8 @@ class LocalPlanner:
         # This is done by subtracting the ego_state from the goal_state_local.
         # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
         # ------------------------------------------------------------------
-        # goal_state_local[0] -= ... 
-        # goal_state_local[1] -= ... 
+        goal_state_local[0] -= ego_state[0]  # Translate x coordinate of goal state to ego vehicle's local frame (such that ego vehicle is at origin)
+        goal_state_local[1] -= ego_state[1]  # Translate y coordinate of goal state to ego vehicle's local frame (such that ego vehicle is at origin)
         # ------------------------------------------------------------------
 
         # Rotate such that the ego state has zero heading in the new frame.
