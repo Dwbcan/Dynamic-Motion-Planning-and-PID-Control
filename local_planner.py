@@ -129,7 +129,7 @@ class LocalPlanner:
         # current ego yaw from the heading variable.
         # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
         # ------------------------------------------------------------------
-        # goal_t = ...
+        goal_t = heading - ego_state[2]
         # ------------------------------------------------------------------
 
         # Velocity is preserved after the transformation.
@@ -156,8 +156,8 @@ class LocalPlanner:
             # and sin(goal_theta + pi/2), respectively.
             # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
             # ------------------------------------------------------------------
-            # x_offset = ...
-            # y_offset = ...
+            x_offset = offset * cos(goal_t + pi/2)  # Compute x component of offset
+            y_offset = offset * sin(goal_t + pi/2)  # Compute y component of offset
             # ------------------------------------------------------------------
 
             goal_state_set.append([goal_x + x_offset, 
