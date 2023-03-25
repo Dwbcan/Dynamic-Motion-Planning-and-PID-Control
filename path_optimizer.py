@@ -81,7 +81,7 @@ class PathOptimizer:
         # optimization methods.
         # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
         # ------------------------------------------------------------------
-        # res = scipy.optimize.minimize(...)
+        res = scipy.optimize.minimize(self.objective,p0,method='L-BFGS-B',bounds=bounds,jac=self.objective_grad)
         # ------------------------------------------------------------------
 
         spiral = self.sample_spiral(res.x)
