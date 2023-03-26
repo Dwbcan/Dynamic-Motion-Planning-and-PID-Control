@@ -112,9 +112,13 @@ class PathOptimizer:
         # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
         # ------------------------------------------------------------------
         # # Remember that a, b, c, d and s are lists
-        # ...
-        # thetas = ...
-        # return thetas
+        a = np.array(a)
+        b = np.array(b)
+        c = np.array(c)
+        d = np.array(d)
+        s = np.array(s)
+        thetas = a*s + b/2*s**2 + c/3*s**3 + d/4*s**4
+        return thetas
         # ------------------------------------------------------------------
 
     ######################################################
