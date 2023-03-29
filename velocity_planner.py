@@ -525,7 +525,12 @@ def calc_final_speed(v_i, a, d):
 
     # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
     # ------------------------------------------------------------------
-    # v_f = ...
-    # return v_f
+    final_speed_squared = v_i**2 + 2 * a * d  # Calculate squared final speed using kinematics formula
+
+    if final_speed_squared < 0:  # Check to ensure square root of a negative number is not computed
+        return 0.001
+    
+    v_f = np.sqrt(final_speed_squared)  # Take square root of squared final speed to calculate final speed 
+    return v_f
     # ------------------------------------------------------------------
 
