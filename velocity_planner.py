@@ -494,8 +494,8 @@ def calc_distance(v_i, v_f, a):
 
     # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
     # ------------------------------------------------------------------
-    # d = ...
-    # return d
+    d = (v_f**2 - v_i**2) / (2 * a)  # Calculate distance using kinematics formula
+    return d
     # ------------------------------------------------------------------
 
 ######################################################
