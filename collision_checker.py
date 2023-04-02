@@ -163,7 +163,8 @@ class CollisionChecker:
                 # A lower score implies a more suitable path.
                 # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
                 # --------------------------------------------------------------
-                # score = ...
+                distance = (paths[i][0][-1] - goal_state[0])**2 + (paths[i][1][-1] - goal_state[1])**2  # Squared Euclidean distance between goal_state and final point on chosen collision-free path
+                score = np.sqrt(distance)  # Euclidean distance between goal_state and final point on chosen collision-free path (the lower this distance/score is, the more optimal the chosen collision-free path is)
                 # --------------------------------------------------------------
 
                 # Compute the "proximity to other colliding paths" score and
@@ -176,7 +177,8 @@ class CollisionChecker:
                         if not collision_check_array[j]:
                             # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
                             # --------------------------------------------------
-                            # score += self._weight * ...
+                            path_dist = (paths[j][0][-1] - paths[i][0][-1])**2 + (paths[j][1][-1] - paths[i][1][-1])**2  # Squared Euclidean distance between final point on other colliding paths and final point on chosen collision-free path
+                            score -= self._weight * np.sqrt(path_dist)  # Euclidean distance between final point on other colliding paths and final point on chosen collision-free path (the lower this distance/score is, the more optimal the chosen collision-free path is)
                             # --------------------------------------------------
 
                             pass
